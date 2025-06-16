@@ -2133,9 +2133,14 @@ input, select, textarea {
 				width: 100%;
 			}
 
-		.image.avatar {
-			border-radius: 100%;
-		}
+            .image.avatar img {
+                border-radius: 50%;
+                width: 100px;      /* Adjust size as needed */
+                height: 100px;     /* Adjust size as needed */
+                object-fit: cover; /* Ensures the image fills the circle */
+                display: block;
+                margin: 0 auto;
+            }
 
 			.image.avatar:before {
 				display: none;
