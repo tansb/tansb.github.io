@@ -3292,6 +3292,14 @@ input, select, textarea {
     padding-top: 0;
 }
 
+/* Use one consistent green accent for all titles in the main content. */
+#main h2,
+#main h3,
+#main h4,
+#main .related-link-title {
+    color: #287f69;
+}
+
 /* Full-width projects: image on the left, text on the right */
 #two > .row {
     display: block;
