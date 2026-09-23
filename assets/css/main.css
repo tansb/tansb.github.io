@@ -2129,9 +2129,13 @@ input, select, textarea {
 			width: 100%;
 		}
 
-			.image.fit img {
-				width: 100%;
-			}
+        .image.fit img {
+          width: 420px;
+          height: 420px;
+          object-fit: cover;
+          display: block;
+          margin: 0 auto;
+}
 
             .image.avatar img {
                 border-radius: 50%;
@@ -3224,3 +3228,358 @@ input, select, textarea {
 			}
 
 	}
+
+/* Page layout: spacious landing banner and centred content */
+#header {
+    position: relative;
+    inset: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    min-height: 55vh;
+    padding: 5rem 2rem;
+    text-align: left;
+    background-position: center;
+    background-size: auto, cover;
+}
+
+/* Align the portrait with the name and affiliation */
+#header > .inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+#header .image.avatar {
+    flex: 0 0 14rem;
+    width: 14rem;
+    margin: 0;
+}
+/* Preserve the portrait proportions inside a circular crop */
+#header .image.avatar img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+}
+#header h1 {
+    font-size: 2em;
+    line-height: 1.5;
+}
+/* Give the name a stronger visual hierarchy */
+#header h1 strong {
+    display: inline-block;
+    font-size: 1.4em;
+}
+#header h1 br { display: inline; }
+
+/* Remove the sidebar offset; keep readable margins */
+#main {
+    width: 100%;
+    max-width: 1184px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+#main > section {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+#main > section:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Full-width projects: image on the left, text on the right */
+#two > .row {
+    display: block;
+    margin: 0;
+}
+#two .work-item {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: start;
+    gap: 2rem;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+#two .work-item > .image { margin: 0; }
+#two .project-content { min-width: 0; }
+
+/* Keep every project image in the left column. */
+#two .project-study > .image {
+    grid-column: 1;
+}
+#two .project-study > .project-content {
+    grid-column: 2;
+}
+
+/* Display wide project figures inside an equal-sized square without cropping. */
+#two .square-thumbnail {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+}
+#two .square-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Footer stays at the bottom instead of inside the profile */
+#footer {
+    position: static;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    background: #1f1815;
+}
+#footer .icons { margin: 0 0 1rem; }
+#footer .copyright { margin: 0; }
+
+/* Mobile: stack the project image above its description */
+@media screen and (max-width: 736px) {
+    #header {
+        min-height: 50vh;
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+    #header > .inner {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    #header .image.avatar {
+        flex: 0 0 auto;
+        width: 9rem;
+    }
+    #header h1 { font-size: 1.4em; }
+    #main { padding: 2rem 1.5rem; }
+    #two .work-item {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+
+/* Contact information beneath the name in the landing banner */
+#header .profile-details { min-width: 0; }
+#header .profile-email {
+    margin: 1.25rem 0 0.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    overflow-wrap: anywhere;
+}
+#header .profile-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+}
+#header .profile-links li { padding: 0; }
+#header .profile-email a,
+#header .profile-links a { color: inherit; }
+@media screen and (max-width: 736px) {
+    #header .profile-links { justify-content: center; }
+}
+
+
+/* Selected projects: shared heading, image and text with skills and links */
+#two .project-study {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+}
+#two .project-study .project-heading {
+    grid-column: 1 / -1;
+}
+/* Clear hierarchy without increasing the existing bullet text size */
+#two .project-study .project-heading h3 {
+    /* Dark teal accent gives the project title clear emphasis */
+    color: #287f69;
+    font-weight: 600;
+    font-size: 1.25em;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+}
+#two .project-study .project-heading p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0;
+}
+/* Body, skills and resource links use the same compact size */
+#two .project-study .project-footer p {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+#two .project-study .project-details {
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 1.2em;
+}
+#two .project-study .project-details li { margin-bottom: 0.85em; }
+#two .project-study .project-details li:last-child { margin-bottom: 0; }
+#two .project-study .project-footer {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+}
+#two .project-study .project-skills { margin-bottom: 0.6rem; }
+#two .project-study .project-links { line-height: 2; }
+#two .project-study .project-links a { display: inline-block; }
+@media screen and (max-width: 736px) {
+    #two .project-study { grid-template-columns: minmax(0, 1fr); }
+    #two .project-study > .image,
+    #two .project-study > .project-content {
+        grid-column: 1;
+    }
+}
+
+
+/* Slightly smaller affiliation and location in the profile */
+#header h1 .profile-affiliation {
+    display: inline-block;
+    font-size: 0.8em;
+    line-height: 1.5;
+}
+
+/* Talks and writing: compact text spacing and restrained video thumbnails. */
+#talks-writing .communication-group h3 {
+    margin-bottom: 0.75rem;
+}
+#talks-writing .public-writing-group {
+    margin-bottom: 2rem;
+}
+#talks-writing .workshop-materials-group {
+    margin-bottom: 2rem;
+}
+#talks-writing .recorded-talks-group {
+    margin-bottom: 2rem;
+}
+#talks-writing .student-supervision-item h4 {
+    margin-bottom: 0.5rem;
+}
+#talks-writing .student-supervision-item p {
+    margin-bottom: 0.65rem;
+}
+#talks-writing .student-supervision-item p:last-child {
+    margin-bottom: 0;
+}
+#talks-writing .workshop-item h4 {
+    margin-bottom: 0.5rem;
+}
+#talks-writing .workshop-item p {
+    margin-bottom: 0.65rem;
+}
+#talks-writing .workshop-item p:last-child {
+    margin-bottom: 0;
+}
+#talks-writing .communication-item h4 {
+    margin-bottom: 0.5rem;
+}
+#talks-writing .communication-item p {
+    margin-bottom: 0.65rem;
+}
+#talks-writing .communication-item p:last-child {
+    margin-bottom: 0;
+}
+/* All article and video thumbnails use the same compact size. */
+#talks-writing .communication-thumbnail {
+    width: 3cm !important;
+    max-width: 3cm;
+    height: 3cm;
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1 / span 5;
+    align-self: center;
+    overflow: hidden;
+}
+#talks-writing .communication-thumbnail:before {
+    display: none;
+}
+#talks-writing .communication-thumbnail img {
+    width: 3cm;
+    height: 3cm;
+    object-fit: cover;
+}
+#talks-writing .communication-item {
+    display: grid;
+    grid-template-columns: 3cm minmax(0, 1fr);
+    column-gap: 1rem;
+    align-items: start;
+}
+#talks-writing .communication-item > h4,
+#talks-writing .communication-item > p {
+    grid-column: 2;
+    min-width: 0;
+}
+/* Workshop entries use a slightly larger, consistent thumbnail. */
+#talks-writing .workshop-item {
+    grid-template-columns: 3.75cm minmax(0, 1fr);
+}
+#talks-writing .workshop-item .communication-thumbnail,
+#talks-writing .workshop-item .communication-thumbnail img {
+    width: 3.75cm !important;
+    max-width: 3.75cm;
+    height: 3.75cm;
+}
+#talks-writing .communication-list {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+#talks-writing .communication-list > li {
+    position: relative;
+    padding-left: 0.35rem;
+    margin-bottom: 1.5rem;
+}
+#talks-writing .communication-list > li:before {
+    content: "\2022";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#talks-writing .communication-list > li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Separate successive project studies without changing their typography */
+#two .project-study + .project-study {
+    border-top: 2px solid #efefef;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+/* Related links: prominent linked titles with compact same-line descriptions. */
+#related-links .related-links-list {
+    display: grid;
+    row-gap: 0.8rem;
+    line-height: 1.35;
+    margin-bottom: 0;
+}
+#related-links .related-links-list > li {
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#related-links .related-links-list > li:last-child {
+    margin-bottom: 0;
+}
+#related-links .related-links-list p {
+    display: block;
+    margin: 0;
+}
+#related-links .related-link-title {
+    font-size: 1.15em;
+    font-weight: 600;
+}

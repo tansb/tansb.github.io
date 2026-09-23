@@ -14,7 +14,7 @@
 		settings = {
 
 			// Parallax background effect?
-				parallax: true,
+				parallax: false,
 
 			// Parallax factor (lower = more intense, higher = less intense).
 				parallaxFactor: 20
@@ -50,14 +50,8 @@
 
 		}
 
-	// Footer.
-		breakpoints.on('<=medium', function() {
-			$footer.insertAfter($main);
-		});
-
-		breakpoints.on('>medium', function() {
-			$footer.appendTo($header);
-		});
+	// Keep the footer below the content at every screen size.
+		$footer.insertAfter($main);
 
 	// Header.
 
@@ -99,7 +93,7 @@
 			$window.on('load', function() {
 
 				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
+					caption: function($a) { return $a.closest('.work-item').find('h3').first().text(); },
 					overlayColor: '#2c2c2c',
 					overlayOpacity: 0.85,
 					popupCloserText: '',
